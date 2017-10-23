@@ -9,13 +9,24 @@ import { WeatherService } from './weather.service';
 })
 export class WeatherComponent {
   txtCityName = '';
-
+  cityName = '';
+  temp = '';
   constructor(private weatherSerice: WeatherService) {}
 
-  onGetWeather() {
-    this.weatherSerice.getWeather(this.txtCityName)
-    .then(temp => alert(temp));
-    this.txtCityName = '';
+  async onGetWeather() {
+    try {
+      const temp = await this.weatherSerice.getWeather(this.txtCityName);
+      this.temp = temp;
+      this.cityName = this.txtCityName;
+      this.txtCityName = '';
+    } catch (err) {
+      alert('Check your city name!');
+    }
+  }
+
+  get message() {
+    if (this.cityName === '') return 'Enter your city name';
+    return `${this.cityName} is now ${this.temp}C`;
   }
 }
 
