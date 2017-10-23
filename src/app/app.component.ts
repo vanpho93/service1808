@@ -12,6 +12,7 @@ export class AppComponent {
   ip: string;
   constructor(private ipService: IpService) {
     this.ipService.getIp()
-    .then(ip => this.ip = ip);
+    .then(ip => this.ip = ip)
+    .catch(err => console.log(err));
   }
 }
