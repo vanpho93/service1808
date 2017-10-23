@@ -1,17 +1,21 @@
 import { Component } from '@angular/core';
+import { WeatherService } from './weather.service';
 
 @Component({
   selector: 'app-weather',
   templateUrl: './weather.component.html',
-  styleUrls: ['./weather.component.css']
+  styleUrls: ['./weather.component.css'],
+  providers: [WeatherService]
 })
 export class WeatherComponent {
   txtCityName = '';
 
-  constructor() {}
+  constructor(private weatherSerice: WeatherService) {}
 
   onGetWeather() {
-    alert(this.txtCityName);
+    this.weatherSerice.getWeather(this.txtCityName)
+    .then(temp => alert(temp));
+    this.txtCityName = '';
   }
 }
 
