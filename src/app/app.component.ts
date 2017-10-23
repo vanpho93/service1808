@@ -11,6 +11,7 @@ import { IpService } from './ip.service';
 export class AppComponent {
   ip: string;
   constructor(private ipService: IpService) {
-    this.ip = this.ipService.getIp();
+    this.ipService.getIp()
+    .then(ip => this.ip = ip);
   }
 }
