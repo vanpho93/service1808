@@ -20,7 +20,8 @@ export class WeatherComponent {
       this.cityName = this.txtCityName;
       this.txtCityName = '';
     } catch (err) {
-      alert('Check your city name!');
+      const errJSON = await (<Response>err).json();
+      alert(errJSON.message);
     }
   }
 
