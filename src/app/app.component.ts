@@ -1,18 +1,16 @@
 import { Component } from '@angular/core';
-import { Http } from '@angular/http';
+import { IpService } from './ip.service';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
+  styleUrls: ['./app.component.css'],
+  providers: [IpService]
 })
 
 export class AppComponent {
   ip: string;
-  constructor(private http: Http) {
-    this.http.get('http://ip.jsontest.com/')
-    .toPromise()
-    .then(res => res.json())
-    .then(resJSON => this.ip = resJSON.ip);
+  constructor(private ipService: IpService) {
+    this.ip = this.ipService.getIp();
   }
 }
