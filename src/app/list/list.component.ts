@@ -6,14 +6,20 @@ import { WordService } from './word.service';
   styleUrls: ['./list.component.css'],
   providers: [WordService]
 })
-export class ListComponent implements OnInit {
 
+export class ListComponent implements OnInit {
+  words: Word[] = [];
   constructor(private wordService: WordService) {
     this.wordService.getWords()
-    .then(words => console.log(words));
+    .then(words => this.words = words);
   }
 
   ngOnInit() {
   }
 
+}
+
+interface Word {
+  en: string;
+  vn: string;
 }
