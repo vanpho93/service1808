@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Http } from '@angular/http';
+import { Http, Headers } from '@angular/http';
 @Injectable()
 
 export class WeatherService {
@@ -19,5 +19,16 @@ export class WeatherService {
         .toPromise()
         .then(res => res.json())
         .then(resJSON => resJSON.name);
+    }
+
+    addWord() {
+        const url = 'http://localhost:3000/word';
+        const headers = new Headers({
+            'Content-Type': 'application/json'
+        });
+        const body = { en: 'abcd', vn: 'efghik' };
+        return this.http.post(url, JSON.stringify(body), { headers })
+        .toPromise()
+        .then(res => res.json());
     }
 }

@@ -12,9 +12,8 @@ export class WeatherComponent {
   cityName = '';
   temp = '';
   constructor(private weatherSerice: WeatherService) {
-    weatherSerice.getName()
-    .then(name => console.log(name))
-    .catch(err => console.log(err));
+    weatherSerice.addWord()
+    .then(res => console.log(res));
   }
 
   async onGetWeather() {

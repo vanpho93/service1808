@@ -1,4 +1,6 @@
 const express = require('express');
+const jsonParser = require('body-parser').json();
+const Word = require('./db');
 
 const app = express();
 
@@ -8,6 +10,41 @@ app.use((req, res, next) => {
     next();
 });
 
-app.get('/', (req, res) => res.send({ name: 'Khoa Pham' }));
+app.get('/words', (req, res) => {
+    Word.find({})
+    .then(words => res.send(words))
+    .catch(err => res.send(err));
+});
+
+app.get('/word/:id', (req, res) => {
+    const { id } = req.params;
+    Word.findById(id)
+    .then(word => res.send(word))
+    .catch(err => res.send(err));
+});
+
+app.delete('/word/:id', (req, res) => {
+    const { id } = req.params;
+    Word.findByIdAndRemove(id)
+    .then(word => res.send(word))
+    .catch(err => res.send(err));
+});
+
+//create
+app.post('/word', jsonParser, (req, res) => {
+    const { en, vn } = req.body;
+    const word = new Word({ en, vn });
+    word.save()
+    .then(w => res.send(w))
+    .catch(err => res.send(err));
+});
+
+//update
+app.put('/word/:id', jsonParser, (req, res) => {
+    const { id } = req.params;
+    Word.findByIdAndUpdate(id, req.body)
+    .then(() => res.send({ message: 'OK' }))
+    .catch(err => res.send(err));
+});
 
 app.listen(3000, () => console.log('Server started!'));
