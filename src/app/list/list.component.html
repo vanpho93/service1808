@@ -1,5 +1,6 @@
 <div style="padding: 10px">
   <div *ngFor="let word of words">
     <p>{{ word.en }}</p>
+    <button (click)="remove(word._id)">Remove</button>
   </div>
 </div>
