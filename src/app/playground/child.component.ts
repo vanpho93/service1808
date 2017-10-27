@@ -21,3 +21,7 @@ export class ChildComponent {
         this.onChange.emit(false);
     }
 }
+
+// store - thay doi
+
+

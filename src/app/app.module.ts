@@ -8,6 +8,10 @@ import { ListComponent } from './list/list.component';
 import { ChildComponent } from './playground/child.component';
 import { ParentComponent } from './playground/parent.component';
 
+// create store here
+import { StoreModule } from '@ngrx/store';
+import { reducer } from './ngrx/reducer';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -19,7 +23,8 @@ import { ParentComponent } from './playground/parent.component';
   imports: [
     BrowserModule,
     HttpModule,
-    FormsModule
+    FormsModule,
+    StoreModule.provideStore(reducer)
   ],
   providers: [],
   bootstrap: [AppComponent]
