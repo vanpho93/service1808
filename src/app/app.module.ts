@@ -5,12 +5,16 @@ import { FormsModule } from '@angular/forms';
 import { AppComponent } from './app.component';
 import { WeatherComponent } from './weather/weather.component';
 import { ListComponent } from './list/list.component';
+import { ChildComponent } from './playground/child.component';
+import { ParentComponent } from './playground/parent.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     WeatherComponent,
-    ListComponent
+    ListComponent,
+    ChildComponent,
+    ParentComponent
   ],
   imports: [
     BrowserModule,
