@@ -10,7 +10,8 @@ import { WordService } from './word.service';
 
 export class ListComponent implements OnInit {
   words: Word[] = [];
-
+  txtEn = '';
+  txtVn = '';
   constructor(private wordService: WordService) {}
 
   ngOnInit() {
@@ -25,6 +26,14 @@ export class ListComponent implements OnInit {
       this.words.splice(index, 1);
     })
     .catch(err => console.log(err.message));
+  }
+
+  add() {
+    this.wordService.addWord(this.txtEn, this.txtVn)
+    .then(word => this.words.push(word))
+    .catch(err => console.log(err));
+    this.txtEn = '';
+    this.txtVn = '';
   }
 }
 

@@ -19,6 +19,15 @@ export class WordService {
         .toPromise()
         .then(res => res.json());
     }
+
+    addWord(en: string, vn: string): Promise<Word> {
+        const url = 'http://localhost:3000/word/';
+        const body = JSON.stringify({ en, vn });
+        const headers = new Headers({ 'Content-Type': 'application/json' });
+        return this.http.post(url, body, { headers })
+        .toPromise()
+        .then(res => res.json());
+    }
 }
 
 interface Word {
