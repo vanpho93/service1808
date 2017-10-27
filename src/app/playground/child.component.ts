@@ -1,13 +1,23 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
 
 @Component({
   selector: 'app-child',
   template: `
       <div>
-          <button>Increment</button>
-          <button>Descrement</button>
+          <button (click)="incr()">Increment</button>
+          <button (click)="desc()">Descrement</button>
       </div>
   `
 })
 
-export class ChildComponent {}
+export class ChildComponent {
+    @Output() onChange = new EventEmitter<boolean>();
+
+    incr(): void {
+        this.onChange.emit(true);
+    }
+
+    desc(): void {
+        this.onChange.emit(false);
+    }
+}
