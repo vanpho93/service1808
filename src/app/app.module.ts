@@ -5,12 +5,14 @@ import { FormsModule } from '@angular/forms';
 import { AppComponent } from './app.component';
 import { WeatherComponent } from './weather/weather.component';
 import { ListComponent } from './list/list.component';
+import { RxListComponent } from './rxlist/rxlist.component';
+import { RxWordComponent } from './rxlist/rx-word.component';
 import { ChildComponent } from './playground/child.component';
 import { ParentComponent } from './playground/parent.component';
 
 // create store here
 import { StoreModule } from '@ngrx/store';
-import { reducer } from './ngrx/reducer';
+import { reducer } from './rxlist/reducer';
 
 @NgModule({
   declarations: [
@@ -18,7 +20,9 @@ import { reducer } from './ngrx/reducer';
     WeatherComponent,
     ListComponent,
     ChildComponent,
-    ParentComponent
+    ParentComponent,
+    RxListComponent,
+    RxWordComponent
   ],
   imports: [
     BrowserModule,

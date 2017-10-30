@@ -1,4 +1,5 @@
-import { Component, EventEmitter, Output } from '@angular/core';
+import { Component } from '@angular/core';
+import { Store } from '@ngrx/store';
 
 @Component({
   selector: 'app-child',
@@ -11,14 +12,14 @@ import { Component, EventEmitter, Output } from '@angular/core';
 })
 
 export class ChildComponent {
-    @Output() onChange = new EventEmitter<boolean>();
+    constructor(private store: Store<any>) {}
 
     incr(): void {
-        this.onChange.emit(true);
+        this.store.dispatch({ type: 'INCREMENT' });
     }
 
     desc(): void {
-        this.onChange.emit(false);
+        this.store.dispatch({ type: 'DESCREMENT' });
     }
 }
 
