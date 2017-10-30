@@ -33,4 +33,4 @@ import { reducer } from './rxlist/reducer';
   providers: [],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {}
