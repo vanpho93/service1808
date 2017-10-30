@@ -9,21 +9,8 @@ import { Observable } from 'rxjs/Observable';
 
 export class RxListComponent {
   words: Observable<Word[]>;
-  txtEn = '';
-  txtVn = '';
   constructor(private store: Store<any>) {
     this.words = this.store.select('words');
-  }
-
-  add() {
-    this.store.dispatch({
-      type: 'ADD_WORD',
-      payload: {
-        en: this.txtEn,
-        vn: this.txtVn,
-        _id: Math.random() + ''
-      }
-    });
   }
 }
 

@@ -7,6 +7,7 @@ import { WeatherComponent } from './weather/weather.component';
 import { ListComponent } from './list/list.component';
 import { RxListComponent } from './rxlist/rxlist.component';
 import { RxWordComponent } from './rxlist/rx-word.component';
+import { RxFormComponent } from './rxlist/rx-form.component';
 import { ChildComponent } from './playground/child.component';
 import { ParentComponent } from './playground/parent.component';
 
@@ -22,7 +23,8 @@ import { reducer } from './rxlist/reducer';
     ChildComponent,
     ParentComponent,
     RxListComponent,
-    RxWordComponent
+    RxWordComponent,
+    RxFormComponent
   ],
   imports: [
     BrowserModule,

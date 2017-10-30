@@ -19,13 +19,7 @@
   }
 </style>
 <div class="container">
-  <input placeholder="English" [(ngModel)]="txtEn" class="form-control">
-  <br>
-  <input placeholder="Vietnamese" [(ngModel)]="txtVn" class="form-control">
-  <br>
-  <button class="btn btn-success" style="width: 220px" (click)="add();">
-    Add new word
-  </button>
+  <app-rx-form></app-rx-form>
   <br><br>
   <app-rx-word *ngFor="let word of words | async" [en]="word.en" [vn]="word.vn"  [_id]="word._id"></app-rx-word>
 </div>
