@@ -9,8 +9,10 @@ import { Observable } from 'rxjs/Observable';
 
 export class RxListComponent {
   words: Observable<Word[]>;
+  isShowForm: Observable<boolean>;
   constructor(private store: Store<any>) {
     this.words = this.store.select('words');
+    this.isShowForm = this.store.select('isShowForm');
   }
 }
 
