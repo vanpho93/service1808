@@ -30,5 +30,6 @@ export class RxFormComponent {
     });
     this.txtEn = '';
     this.txtVn = '';
+    this.store.dispatch({ type: 'TOGGLE_IS_SHOW_FORM' });
   }
 }

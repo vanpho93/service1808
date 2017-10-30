@@ -20,7 +20,7 @@
 </style>
 <div class="container">
   <app-rx-form *ngIf="isShowForm | async"></app-rx-form>
-  <button class="btn btn-primary" *ngIf="!(isShowForm | async)">Show form</button>
+  <button class="btn btn-primary" *ngIf="!(isShowForm | async)" (click)="showForm()">Show form</button>
   <br><br>
   <app-rx-word *ngFor="let word of words | async" [en]="word.en" [vn]="word.vn"  [_id]="word._id"></app-rx-word>
 </div>

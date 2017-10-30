@@ -43,5 +43,8 @@ export const reducer = (state = defaultState, action: Action) => {
         const newWords = state.words.concat({ en, vn, _id });
         return { ...state, words: newWords };
     }
+    if (action.type === 'TOGGLE_IS_SHOW_FORM') {
+        return { ...state, isShowForm: !state.isShowForm };
+    }
     return state;
 };

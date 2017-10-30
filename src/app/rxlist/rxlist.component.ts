@@ -14,6 +14,10 @@ export class RxListComponent {
     this.words = this.store.select('words');
     this.isShowForm = this.store.select('isShowForm');
   }
+
+  showForm() {
+    this.store.dispatch({ type: 'TOGGLE_IS_SHOW_FORM' });
+  }
 }
 
 const WORD: Word[] = [
