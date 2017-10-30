@@ -29,18 +29,19 @@ const WORD: Word[] = [
 ];
 
 const defaultState = {
-    words: WORD
+    words: WORD,
+    isShowForm: false
 };
 
 export const reducer = (state = defaultState, action: Action) => {
     if (action.type === 'REMOVE_WORD') {
         const newWords = state.words.filter(word => word._id !== action.payload._id);
-        return { words: newWords };
+        return { ...state, words: newWords };
     }
     if (action.type === 'ADD_WORD') {
         const { en, vn, _id } = action.payload;
         const newWords = state.words.concat({ en, vn, _id });
-        return { words: newWords };
+        return { ...state, words: newWords };
     }
     return state;
 };
