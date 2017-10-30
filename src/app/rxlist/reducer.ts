@@ -51,10 +51,12 @@ function isShowFormReducer(state = false, action: Action) {
     return state;
 }
 
-export const reducer = {
+const reducer = {
     words: wordsReducer,
     isShowForm: isShowFormReducer
 };
+
+export default reducer;
 
 // export const reducer = (state = defaultState, action: Action) => {
 //     if (action.type === 'REMOVE_WORD') {

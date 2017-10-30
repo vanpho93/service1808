@@ -13,7 +13,7 @@ import { ParentComponent } from './playground/parent.component';
 
 // create store here
 import { StoreModule } from '@ngrx/store';
-import { reducer } from './rxlist/reducer';
+import reducer from './rxlist/reducer';
 
 @NgModule({
   declarations: [
