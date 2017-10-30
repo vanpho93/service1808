@@ -5,7 +5,7 @@ interface Word {
     vn: string;
     _id: string;
 }
-const WORD: Word[] = [
+const WORDS: Word[] = [
     {
       '_id': '59f08ff476ab40f4a22b5fa0',
       'en': 'activity',
@@ -29,22 +29,45 @@ const WORD: Word[] = [
 ];
 
 const defaultState = {
-    words: WORD,
+    words: WORDS,
     isShowForm: false
 };
 
-export const reducer = (state = defaultState, action: Action) => {
+function wordsReducer(state = WORDS, action: Action) {
     if (action.type === 'REMOVE_WORD') {
-        const newWords = state.words.filter(word => word._id !== action.payload._id);
-        return { ...state, words: newWords };
+        return state.filter(word => word._id !== action.payload._id);
     }
     if (action.type === 'ADD_WORD') {
         const { en, vn, _id } = action.payload;
-        const newWords = state.words.concat({ en, vn, _id });
-        return { ...state, words: newWords };
-    }
-    if (action.type === 'TOGGLE_IS_SHOW_FORM') {
-        return { ...state, isShowForm: !state.isShowForm };
+        return state.concat({ en, vn, _id });
     }
     return state;
+}
+
+function isShowFormReducer(state = false, action: Action) {
+    if (action.type === 'TOGGLE_IS_SHOW_FORM') {
+        return !state;
+    }
+    return state;
+}
+
+export const reducer = {
+    words: wordsReducer,
+    isShowForm: isShowFormReducer
 };
+
+// export const reducer = (state = defaultState, action: Action) => {
+//     if (action.type === 'REMOVE_WORD') {
+//         const newWords = state.words.filter(word => word._id !== action.payload._id);
+//         return { ...state, words: newWords };
+//     }
+//     if (action.type === 'ADD_WORD') {
+//         const { en, vn, _id } = action.payload;
+//         const newWords = state.words.concat({ en, vn, _id });
+//         return { ...state, words: newWords };
+//     }
+//     if (action.type === 'TOGGLE_IS_SHOW_FORM') {
+//         return { ...state, isShowForm: !state.isShowForm };
+//     }
+//     return state;
+// };
